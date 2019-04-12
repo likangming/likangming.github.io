@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://likangming.github.io/"/>
-  <updated>2019-04-12T09:27:24.839Z</updated>
+  <updated>2019-04-12T10:09:45.719Z</updated>
   <id>https://likangming.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://likangming.github.io/2019/04/12/jie-kou-ce-shi-zhong-cookies-de-fu-yong/"/>
     <id>https://likangming.github.io/2019/04/12/jie-kou-ce-shi-zhong-cookies-de-fu-yong/</id>
     <published>2019-04-12T09:25:29.825Z</published>
-    <updated>2019-04-12T09:27:24.839Z</updated>
+    <updated>2019-04-12T10:09:45.719Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,8 @@
       
         
         
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+          &lt;p&gt;在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。&lt;/p&gt;
+&lt;h3 id=&quot;前提准备&quot;&gt;&lt;a href=&quot;#前提准备&quot;
         
       
     

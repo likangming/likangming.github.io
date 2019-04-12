@@ -5,7 +5,8 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="接口测试中cookies的复用, Damon Seven">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="description" content="在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。
+前提准备Python version：3.7Ida：P">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -401,8 +402,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+                <p>在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。</p>
+<h3 id="前提准备"><a href="#前提准备" class="headerlink" title="前提准备"></a>前提准备</h3><p>Python version：3.7<br>Ida：Pycharm</p>
+<h4 id="要导入的模块"><a href="#要导入的模块" class="headerlink" title="要导入的模块"></a>要导入的模块</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">import</span> requests
+<span class="token function">import</span> sys
+<span class="token function">import</span> ast
+from configparser <span class="token function">import</span> ConfigParser
 </code></pre>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
@@ -597,7 +602,8 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
+                    <div class="summary">在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。
+前提准备Python version：3.7Ida：P</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-12
