@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://likangming.github.io/"/>
-  <updated>2019-04-28T02:53:39.975Z</updated>
+  <updated>2019-03-25T09:59:39.301Z</updated>
   <id>https://likangming.github.io/</id>
   
   <author>
@@ -15,29 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>接口测试中cookies的复用</title>
-    <link href="https://likangming.github.io/2019/04/12/jie-kou-ce-shi-zhong-cookies-de-fu-yong/"/>
-    <id>https://likangming.github.io/2019/04/12/jie-kou-ce-shi-zhong-cookies-de-fu-yong/</id>
-    <published>2019-04-12T09:25:29.825Z</published>
-    <updated>2019-04-28T02:53:39.975Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。&lt;/p&gt;
-&lt;h3 id=&quot;前提准备&quot;&gt;&lt;a href=&quot;#前提准备&quot;
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>Hello World</title>
@@ -58,6 +35,34 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>接口测试中cookies的复用</title>
+    <link href="https://likangming.github.io/2019/03/22/jie-kou-ce-shi-zhong-cookies-de-fu-yong/"/>
+    <id>https://likangming.github.io/2019/03/22/jie-kou-ce-shi-zhong-cookies-de-fu-yong/</id>
+    <published>2019-03-22T06:47:00.000Z</published>
+    <updated>2019-04-28T03:48:19.653Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;hr&gt;
+&lt;p&gt;在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。&lt;/p&gt;
+&lt;h3 id=&quot;前提准备&quot;&gt;&lt;a href=&quot;#前提准备&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="接口测试" scheme="https://likangming.github.io/categories/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="ansible" scheme="https://likangming.github.io/tags/ansible/"/>
     
   </entry>
   
