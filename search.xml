@@ -26,10 +26,16 @@
       
       <categories>
           
-          <category> 接口测试 </category>
+          <category> Python </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 接口测试 </tag>
+            
+        </tags>
       
     </entry>
     
