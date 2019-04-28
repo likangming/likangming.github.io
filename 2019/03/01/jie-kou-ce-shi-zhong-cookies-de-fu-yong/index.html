@@ -5,8 +5,9 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="接口测试中cookies的复用, Damon Seven">
-    <meta name="description" content="在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。
-前提准备Python version：3.7Ida：P">
+    <meta name="description" content="
+在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。
+前提准备Python version：3.7Ida：">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -380,13 +381,22 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/接口测试/" class="post-category" target="_blank">
+                                接口测试
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-12
+                    2019-03-01
                 </div>
 
                 
@@ -402,9 +412,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。</p>
+                <hr>
+<p>在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。</p>
 <h3 id="前提准备"><a href="#前提准备" class="headerlink" title="前提准备"></a>前提准备</h3><p>Python version：3.7<br>Ida：Pycharm</p>
-<h4 id="方法一：在一个接口请求中输入上一个接口的cookies信息"><a href="#方法一：在一个接口请求中输入上一个接口的cookies信息" class="headerlink" title="方法一：在一个接口请求中输入上一个接口的cookies信息"></a>方法一：在一个接口请求中输入上一个接口的cookies信息</h4><pre class=" language-bash"><code class="language-bash">class HttpRequest:
+<h3 id="方法一：在一个接口请求中输入上一个接口的cookies信息"><a href="#方法一：在一个接口请求中输入上一个接口的cookies信息" class="headerlink" title="方法一：在一个接口请求中输入上一个接口的cookies信息"></a>方法一：在一个接口请求中输入上一个接口的cookies信息</h3><pre class=" language-bash"><code class="language-bash">class HttpRequest:
     <span class="token string">""</span><span class="token string">"
     使用这类的request方法去完成不同的http请求，并且返回相应结果
     "</span><span class="token string">""</span>
@@ -436,7 +447,7 @@
     params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'mobilephone'</span><span class="token keyword">:</span> <span class="token string">'XXX'</span>, <span class="token string">'amount'</span><span class="token keyword">:</span> <span class="token string">'1500'</span><span class="token punctuation">}</span>
     resp <span class="token operator">=</span> httprequest.http_request<span class="token punctuation">(</span><span class="token string">'post'</span>, url_recharge, data<span class="token operator">=</span>params, cookies<span class="token operator">=</span>resp.cookies<span class="token punctuation">)</span>
 </code></pre>
-<h4 id="方法二：直接调用requests的sessions"><a href="#方法二：直接调用requests的sessions" class="headerlink" title="方法二：直接调用requests的sessions"></a>方法二：直接调用requests的sessions</h4><pre class=" language-bash"><code class="language-bash">class HttpRequest2:
+<h3 id="方法二：直接调用requests的sessions"><a href="#方法二：直接调用requests的sessions" class="headerlink" title="方法二：直接调用requests的sessions"></a>方法二：直接调用requests的sessions</h3><pre class=" language-bash"><code class="language-bash">class HttpRequest2:
     <span class="token string">""</span><span class="token string">"
     使用这类的request方法去完成不同的http请求，并且返回相应结果
     "</span><span class="token string">""</span>
@@ -623,7 +634,7 @@
                     </span>
                     <a href="https://likangming.github.io" class="b-link-green">Damon Seven</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/12/jie-kou-ce-shi-zhong-cookies-de-fu-yong/" class="b-link-green">接口测试中cookies的复用</a>
+                    <a href="/2019/03/01/jie-kou-ce-shi-zhong-cookies-de-fu-yong/" class="b-link-green">接口测试中cookies的复用</a>
                 </p>
             </div>
         </div>
@@ -646,43 +657,7 @@
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/2019/04/12/jie-kou-ce-shi-zhong-cookies-de-fu-yong/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="接口测试中cookies的复用">
-                        
-                        <span class="card-title">接口测试中cookies的复用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。
-前提准备Python version：3.7Ida：P</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-12
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            likangming
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2019/03/25/hello-world/">
                     <div class="card-image">
@@ -696,9 +671,9 @@
                 <div class="card-content article-content">
                     <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-25
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-25
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -707,6 +682,46 @@
                         </span>
                     </div>
                 </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/03/01/jie-kou-ce-shi-zhong-cookies-de-fu-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="接口测试中cookies的复用">
+                        
+                        <span class="card-title">接口测试中cookies的复用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。
+前提准备Python version：3.7Ida：</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/接口测试/" class="post-category" target="_blank">
+                                    接口测试
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
                 
             </div>
         </div>

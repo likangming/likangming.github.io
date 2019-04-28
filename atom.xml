@@ -40,10 +40,10 @@
   
   <entry>
     <title>接口测试中cookies的复用</title>
-    <link href="https://likangming.github.io/2019/03/22/jie-kou-ce-shi-zhong-cookies-de-fu-yong/"/>
-    <id>https://likangming.github.io/2019/03/22/jie-kou-ce-shi-zhong-cookies-de-fu-yong/</id>
-    <published>2019-03-22T06:47:00.000Z</published>
-    <updated>2019-04-28T03:48:19.653Z</updated>
+    <link href="https://likangming.github.io/2019/03/01/jie-kou-ce-shi-zhong-cookies-de-fu-yong/"/>
+    <id>https://likangming.github.io/2019/03/01/jie-kou-ce-shi-zhong-cookies-de-fu-yong/</id>
+    <published>2019-03-01T06:47:00.000Z</published>
+    <updated>2019-04-28T03:55:47.340Z</updated>
     
     <summary type="html">
     
@@ -61,8 +61,6 @@
     
       <category term="接口测试" scheme="https://likangming.github.io/categories/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/"/>
     
-    
-      <category term="ansible" scheme="https://likangming.github.io/tags/ansible/"/>
     
   </entry>
   
