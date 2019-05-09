@@ -4,10 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="接口测试中cookies的复用, Damon Seven">
+    <meta name="keywords" content="DoExcel类的封装, Damon Seven">
     <meta name="description" content="
-在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。
-前提准备Python version：3.7Ida：">
+do_excel类的封装：支持读和写
+代码如下所示：#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Author:likangming
+# Created time:2019/4/17 1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>接口测试中cookies的复用 | Damon Seven</title>
+    <title>DoExcel类的封装 | Damon Seven</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -259,13 +262,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        接口测试中cookies的复用
+                        DoExcel类的封装
                     </div>
                 </div>
             </div>
@@ -400,7 +403,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-03-01
+                    2019-05-09
                 </div>
 
                 
@@ -417,81 +420,63 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <hr>
-<p>在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。</p>
-<h3 id="前提准备"><a href="#前提准备" class="headerlink" title="前提准备"></a>前提准备</h3><p>Python version：3.7<br>Ida：Pycharm</p>
-<h3 id="方法一：在一个接口请求中输入上一个接口的cookies信息"><a href="#方法一：在一个接口请求中输入上一个接口的cookies信息" class="headerlink" title="方法一：在一个接口请求中输入上一个接口的cookies信息"></a>方法一：在一个接口请求中输入上一个接口的cookies信息</h3><pre class=" language-bash"><code class="language-bash">class HttpRequest:
-    <span class="token string">""</span><span class="token string">"
-    使用这类的request方法去完成不同的http请求，并且返回相应结果
-    "</span><span class="token string">""</span>
+<p>do_excel类的封装：支持读和写</p>
+<h3 id="代码如下所示："><a href="#代码如下所示：" class="headerlink" title="代码如下所示："></a>代码如下所示：</h3><pre><code>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Author:likangming
+# Created time:2019/4/17 16:41
+# Filename:do_excel.py
+import openpyxl
 
-    def http_request<span class="token punctuation">(</span>self, method, url, data, json<span class="token operator">=</span>None, cookies<span class="token operator">=</span>None<span class="token punctuation">)</span>:
-        method <span class="token operator">=</span> method.upper<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 将method强制转成大写</span>
-        <span class="token keyword">if</span> method <span class="token operator">==</span> <span class="token string">'GET'</span><span class="token keyword">:</span>
-            resp <span class="token operator">=</span> requests.get<span class="token punctuation">(</span>url, params<span class="token operator">=</span>data, cookies<span class="token operator">=</span>cookies<span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> method <span class="token operator">==</span> <span class="token string">'POST'</span><span class="token keyword">:</span>
-            <span class="token keyword">if</span> json:
-                resp <span class="token operator">=</span> requests.post<span class="token punctuation">(</span>url, json<span class="token operator">=</span>data, cookies<span class="token operator">=</span>cookies<span class="token punctuation">)</span>
-            else:
-                resp <span class="token operator">=</span> requests.post<span class="token punctuation">(</span>url, data<span class="token operator">=</span>data, cookies<span class="token operator">=</span>cookies<span class="token punctuation">)</span>
-        else:
-            resp <span class="token operator">=</span> None
-            print<span class="token punctuation">(</span><span class="token string">'Un-support method'</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> resp
-</code></pre>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 操作代码</span>
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token keyword">:</span>
-    params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'mobilephone'</span><span class="token keyword">:</span> <span class="token string">'XXX'</span>, <span class="token string">'pwd'</span><span class="token keyword">:</span> <span class="token string">'XXX'</span><span class="token punctuation">}</span>
-    url_register <span class="token operator">=</span> <span class="token string">'http://xxx.xxx'</span>
-    url_login <span class="token operator">=</span> <span class="token string">'http://xxx.xxx'</span>
-    url_recharge <span class="token operator">=</span> <span class="token string">'http://xxx.xxx'</span>
-    httprequest <span class="token operator">=</span> HttpRequest<span class="token punctuation">(</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true"># 实例化</span>
-    <span class="token comment" spellcheck="true"># 调用登录接口</span>
-    resp <span class="token operator">=</span> httprequest.http_request<span class="token punctuation">(</span><span class="token string">'post'</span>, url_login, data<span class="token operator">=</span>params<span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true"># 调用充值接口</span>
-    params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'mobilephone'</span><span class="token keyword">:</span> <span class="token string">'XXX'</span>, <span class="token string">'amount'</span><span class="token keyword">:</span> <span class="token string">'1500'</span><span class="token punctuation">}</span>
-    resp <span class="token operator">=</span> httprequest.http_request<span class="token punctuation">(</span><span class="token string">'post'</span>, url_recharge, data<span class="token operator">=</span>params, cookies<span class="token operator">=</span>resp.cookies<span class="token punctuation">)</span>
-</code></pre>
-<h3 id="方法二：直接调用requests的sessions"><a href="#方法二：直接调用requests的sessions" class="headerlink" title="方法二：直接调用requests的sessions"></a>方法二：直接调用requests的sessions</h3><pre class=" language-bash"><code class="language-bash">class HttpRequest2:
-    <span class="token string">""</span><span class="token string">"
-    使用这类的request方法去完成不同的http请求，并且返回相应结果
-    "</span><span class="token string">""</span>
-    def __init__<span class="token punctuation">(</span>self<span class="token punctuation">)</span>:
-        <span class="token comment" spellcheck="true"># 打开一个session</span>
-        self.session <span class="token operator">=</span> requests.sessions.session<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    def http_request<span class="token punctuation">(</span>self, method, url, data<span class="token punctuation">)</span>:
-        method <span class="token operator">=</span> method.upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> method <span class="token operator">==</span> <span class="token string">'GET'</span><span class="token keyword">:</span>
-            resp <span class="token operator">=</span> self.session.request<span class="token punctuation">(</span>method<span class="token operator">=</span>method, url<span class="token operator">=</span>url, params<span class="token operator">=</span>data<span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> method <span class="token operator">==</span> <span class="token string">'POST'</span><span class="token keyword">:</span>
-            <span class="token keyword">if</span> json:
-                resp <span class="token operator">=</span> self.session.request<span class="token punctuation">(</span>method<span class="token operator">=</span>method, url<span class="token operator">=</span>url, json<span class="token operator">=</span>json<span class="token punctuation">)</span>
-            else:
-                resp <span class="token operator">=</span> self.session.request<span class="token punctuation">(</span>method<span class="token operator">=</span>method, url<span class="token operator">=</span>url, data<span class="token operator">=</span>data<span class="token punctuation">)</span>
-        else:
-            resp <span class="token operator">=</span> None
-            print<span class="token punctuation">(</span><span class="token string">'Un-support method'</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> resp
+class Case:
+    &quot;&quot;&quot;
+    测试用例集，每一个测试用例，实际上就是它的一个实例
+    &quot;&quot;&quot;
 
-    def session_close<span class="token punctuation">(</span>self<span class="token punctuation">)</span>:
-        self.session.close<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 每执行一次session，都要将它关闭</span>
+    def __init__(self):        # 类属性对应测试用例里的字段，以自己的为主
+        self.case_id = None
+        self.title = None
+        self.url = None
+        self.data = None
+        self.method = None
+        self.header = None
+        self.expected = None
+        self.actual = None
+        self.result = None
+
+
+class DoExcel:
+
+    def __init__(self, file_name, sheet_name):
+        self.file_name = file_name
+        self.sheet_name = sheet_name
+        self.workbook = openpyxl.load_workbook(file_name)
+        self.sheet = self.workbook[sheet_name]
+
+    def getcase(self):
+        max_row = self.sheet.max_row    # 获取最大行数
+        cases = []
+        for i in range(2, max_row + 1):  # 从第二行开始读取数据
+            case = Case()   # 实例
+            case.case_id = self.sheet.cell(row=i, column=1).value
+            case.title = self.sheet.cell(row=i, column=2).value
+            case.url = self.sheet.cell(row=i, column=3).value
+            case.data = self.sheet.cell(row=i, column=4).value
+            case.method = self.sheet.cell(row=i, column=5).value
+            case.expected = self.sheet.cell(row=i, column=6).value
+            cases.append(case)
+
+        self.workbook.close()
+        return cases    # 返回case列表
+
+    def writer_result(self, row, actual, result):    # 将实际返回值写入到excel中
+        sheet = self.workbook[self.sheet_name]
+        sheet.cell(row, 7).value = actual
+        sheet.cell(row, 8).value = result
+        self.workbook.save(filename=self.file_name)
+        self.workbook.close()
 </code></pre>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 操作代码</span>
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token keyword">:</span>
-    params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'mobilephone'</span><span class="token keyword">:</span> <span class="token string">'156XXX'</span>, <span class="token string">'pwd'</span><span class="token keyword">:</span> <span class="token string">'XXX'</span><span class="token punctuation">}</span>
-    url_register <span class="token operator">=</span> <span class="token string">'http://xxx.xxx'</span>
-    url_login <span class="token operator">=</span> <span class="token string">'http://xxx.xxx'</span>
-    url_recharge <span class="token operator">=</span> <span class="token string">'http://xxx.xxx'</span>
-    httprequest <span class="token operator">=</span> HttpRequest2<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true"># 调用登录接口</span>
-    resp <span class="token operator">=</span> httprequest.http_request<span class="token punctuation">(</span><span class="token string">'post'</span>, url_login, data<span class="token operator">=</span>params<span class="token punctuation">)</span>
-    print<span class="token punctuation">(</span>resp.text<span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true"># 调用充值接口</span>
-    params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'mobilephone'</span><span class="token keyword">:</span> <span class="token string">'156XXX'</span>, <span class="token string">'amount'</span><span class="token keyword">:</span> <span class="token string">'1500'</span><span class="token punctuation">}</span>
-    resp <span class="token operator">=</span> httprequest.http_request<span class="token punctuation">(</span><span class="token string">'post'</span>, url_recharge, data<span class="token operator">=</span>params<span class="token punctuation">)</span>
-    print<span class="token punctuation">(</span>resp.text<span class="token punctuation">)</span>
-</code></pre>
-<h4 id="总结：方法一是调用充值接口时，输入登录的cookies信息，方法二是调用Session对象，Session每执行一个对象，cookies信息都有保留在当前Session，所以可以调用。明白其中的原理，用哪种方式都可以。"><a href="#总结：方法一是调用充值接口时，输入登录的cookies信息，方法二是调用Session对象，Session每执行一个对象，cookies信息都有保留在当前Session，所以可以调用。明白其中的原理，用哪种方式都可以。" class="headerlink" title="总结：方法一是调用充值接口时，输入登录的cookies信息，方法二是调用Session对象，Session每执行一个对象，cookies信息都有保留在当前Session，所以可以调用。明白其中的原理，用哪种方式都可以。"></a>总结：方法一是调用充值接口时，输入登录的cookies信息，方法二是调用Session对象，Session每执行一个对象，cookies信息都有保留在当前Session，所以可以调用。明白其中的原理，用哪种方式都可以。</h4>
             </div>
             <hr>
 
@@ -638,7 +623,7 @@
                     </span>
                     <a href="https://likangming.github.io" class="b-link-green">Damon Seven</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/01/jie-kou-ce-shi-zhong-cookies-de-fu-yong/" class="b-link-green">接口测试中cookies的复用</a>
+                    <a href="/2019/05/09/cao-zuo-excel-lei-de-feng-zhuang/" class="b-link-green">DoExcel类的封装</a>
                 </p>
             </div>
         </div>
@@ -661,7 +646,8 @@
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/05/09/cao-zuo-excel-lei-de-feng-zhuang/">
                     <div class="card-image">
@@ -680,9 +666,57 @@ do_excel类的封装：支持读和写
 # Author:likangming
 # Created time:2019/4/17 1</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-09
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category" target="_blank">
+                                    Python
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/接口测试/" target="_blank">
+                        <span class="chip bg-color">接口测试</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/03/01/jie-kou-ce-shi-zhong-cookies-de-fu-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="接口测试中cookies的复用">
+                        
+                        <span class="card-title">接口测试中cookies的复用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。
+前提准备Python version：3.7Ida：</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -702,39 +736,6 @@ do_excel类的封装：支持读和写
                         <span class="chip bg-color">接口测试</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/02/10/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-10
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            likangming
-                            
-                        </span>
-                    </div>
                 </div>
                 
             </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://likangming.github.io/"/>
-  <updated>2019-03-25T09:59:39.301Z</updated>
+  <updated>2019-05-09T08:21:56.563Z</updated>
   <id>https://likangming.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://likangming.github.io/2019/05/09/hello-world/"/>
-    <id>https://likangming.github.io/2019/05/09/hello-world/</id>
-    <published>2019-05-09T03:36:35.087Z</published>
-    <updated>2019-03-25T09:59:39.301Z</updated>
+    <title>DoExcel类的封装</title>
+    <link href="https://likangming.github.io/2019/05/09/cao-zuo-excel-lei-de-feng-zhuang/"/>
+    <id>https://likangming.github.io/2019/05/09/cao-zuo-excel-lei-de-feng-zhuang/</id>
+    <published>2019-05-09T04:00:00.000Z</published>
+    <updated>2019-05-09T08:21:56.563Z</updated>
     
     <summary type="html">
     
@@ -29,12 +29,18 @@
       
         
         
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+          &lt;hr&gt;
+&lt;p&gt;do_excel类的封装：支持读和写&lt;/p&gt;
+&lt;h3 id=&quot;代码如下所示：&quot;&gt;&lt;a href=&quot;#代码如下所示：&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
+      <category term="Python" scheme="https://likangming.github.io/categories/Python/"/>
+    
+    
+      <category term="接口测试" scheme="https://likangming.github.io/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
@@ -63,6 +69,28 @@
     
     
       <category term="接口测试" scheme="https://likangming.github.io/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://likangming.github.io/2019/02/10/hello-world/"/>
+    <id>https://likangming.github.io/2019/02/10/hello-world/</id>
+    <published>2019-02-10T04:00:00.000Z</published>
+    <updated>2019-05-09T08:13:35.609Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
     
   </entry>
   
