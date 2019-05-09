@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Damon Seven</title>
+  <title>Damon</title>
   
   <subtitle>ikangming</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://likangming.github.io/"/>
-  <updated>2019-05-09T08:21:56.563Z</updated>
+  <updated>2019-05-09T08:39:42.390Z</updated>
   <id>https://likangming.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://likangming.github.io/2019/05/09/cao-zuo-excel-lei-de-feng-zhuang/"/>
     <id>https://likangming.github.io/2019/05/09/cao-zuo-excel-lei-de-feng-zhuang/</id>
     <published>2019-05-09T04:00:00.000Z</published>
-    <updated>2019-05-09T08:21:56.563Z</updated>
+    <updated>2019-05-09T08:39:42.390Z</updated>
     
     <summary type="html">
     
@@ -30,7 +30,7 @@
         
         
           &lt;hr&gt;
-&lt;p&gt;do_excel类的封装：支持读和写&lt;/p&gt;
+&lt;p&gt;do_excel类的封装：支持读取测试用例，及修改测试用例。&lt;/p&gt;
 &lt;h3 id=&quot;代码如下所示：&quot;&gt;&lt;a href=&quot;#代码如下所示：&quot; class=&quot;headerlink&quot;
         
       
