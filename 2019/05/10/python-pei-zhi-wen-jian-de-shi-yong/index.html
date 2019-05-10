@@ -4,13 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="DoExcel类的封装, Damon">
-    <meta name="description" content="
-do_excel类的封装：支持读取测试用例，及修改测试用例。
-代码如下所示：#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Author:likangming
-# Created time">
+    <meta name="keywords" content="python配置文件的使用, Damon">
+    <meta name="description" content="一.什么是配置文件？为什么要做配置文件？
+将所有的代码和配置都变成模块化可配置化，这样就提高了代码的重用性，不再每次都去修改代码内部，这个就是我们逐步要做的事情，可配置化
+
+二.python中的ConfigParser类from confi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +16,7 @@ do_excel类的封装：支持读取测试用例，及修改测试用例。
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>DoExcel类的封装 | Damon</title>
+    <title>python配置文件的使用 | Damon</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -262,13 +260,13 @@ do_excel类的封装：支持读取测试用例，及修改测试用例。
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        DoExcel类的封装
+                        python配置文件的使用
                     </div>
                 </div>
             </div>
@@ -403,7 +401,7 @@ do_excel类的封装：支持读取测试用例，及修改测试用例。
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-05-09
+                    2019-05-10
                 </div>
 
                 
@@ -419,62 +417,37 @@ do_excel类的封装：支持读取测试用例，及修改测试用例。
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <hr>
-<p>do_excel类的封装：支持读取测试用例，及修改测试用例。</p>
-<h3 id="代码如下所示："><a href="#代码如下所示：" class="headerlink" title="代码如下所示："></a>代码如下所示：</h3><pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Author:likangming
-# Created time:2019/5/9 16:41
-# Filename:do_excel.py
-import openpyxl
+                <h1 id="一-什么是配置文件？为什么要做配置文件？"><a href="#一-什么是配置文件？为什么要做配置文件？" class="headerlink" title="一.什么是配置文件？为什么要做配置文件？"></a>一.什么是配置文件？为什么要做配置文件？</h1><blockquote>
+<p>将所有的代码和配置都变成模块化可配置化，这样就提高了代码的重用性，不再每次都去修改代码内部，这个就是我们逐步要做的事情，可配置化</p>
+</blockquote>
+<h1 id="二-python中的ConfigParser类"><a href="#二-python中的ConfigParser类" class="headerlink" title="二.python中的ConfigParser类"></a>二.python中的ConfigParser类</h1><pre><code>from configparser import ConfigParser
+</code></pre><h2 id="configparser是python自带的模块，用法如下："><a href="#configparser是python自带的模块，用法如下：" class="headerlink" title="configparser是python自带的模块，用法如下："></a>configparser是python自带的模块，用法如下：</h2><blockquote>
+<p>1.创建ConfigParser对象。<br>2.调用read()函数打开配置文件<br>3.常用配置函数如下：<br>函数名 | 说明<br>— | —<br>sections() | 得到所有的 section，并以列表的形式返回<br>options(section) | 得到该 section 的所有 option (key值)<br>items(section) | 得到该 section 的所有键值对<br>get(section, option) | 得到 section 中 option 的值，返回为 string 类型，指定标签下面的 key 对应的 value 值<br>getint(section, option) | 得到 section 中的 option 值，返回为 int 类型<br>add_section() | 往配置文件中添加 section<br>set(section, name, value) | 在 section 下设置 name=value</p>
+</blockquote>
+<h1 id="三-实例"><a href="#三-实例" class="headerlink" title="三.实例"></a>三.实例</h1><blockquote>
+<p>1.新建config.py文件<br><code>`</code></p>
+</blockquote>
+<p>#!/usr/bin/env python</p>
+<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="_coding:utf-8_"></a>_<em><em>coding:utf-8</em></em>_</h1><p>“””<br>@Time     : 2019/5/10 13:59<br>@Author   : likangming<br>@Email    : <a href="mailto:kangming40@163.com" target="_blank" rel="noopener">kangming40@163.com</a><br>@File     : config.py<br>@Software : PyCharm<br>“””<br>import configparser<br>from ALA_WeChat_1.common import contants</p>
+<p>class ReadConfig:<br>    “””<br>    完成配置文件的读取<br>    “””</p>
+<pre><code>def __init__(self):
+    self.config = configparser.ConfigParser()  # 初始化类
+    self.config.read(contants.global_file)  # 先加载global
+    switch = self.config.getboolean(&#39;switch&#39;, &#39;on&#39;)  # 通过判断switch的值，来确定使用哪个环境的配置
+    if switch:      # 开关打开的时候，使用test的配置
+        self.config.read(contants.test_file, encoding=&#39;utf-8&#39;)
+    else:       # 开光关闭的时候，使用issue的配置
+        self.config.read(contants.issue_file, encoding=&#39;utf-8&#39;)
 
-class Case:
-    &quot;&quot;&quot;
-    测试用例集，每一个测试用例，实际上就是它的一个实例
-    &quot;&quot;&quot;
+def get(self, section, option):
+    return self.config.get(section, option)
+</code></pre><p>conf = ReadConfig()        # </p>
+<h1 id="if-name-‘main‘"><a href="#if-name-‘main‘" class="headerlink" title="if name == ‘main‘:"></a>if <strong>name</strong> == ‘<strong>main</strong>‘:</h1><h1 id="conf-ReadConfig"><a href="#conf-ReadConfig" class="headerlink" title="conf = ReadConfig()"></a>conf = ReadConfig()</h1><h1 id="print-conf-get-‘api’-‘pre-url’"><a href="#print-conf-get-‘api’-‘pre-url’" class="headerlink" title="print(conf.get(‘api’, ‘pre_url’))"></a>print(conf.get(‘api’, ‘pre_url’))</h1><pre><code>&gt; 2.新建contants.py文件（我是将测试用例的相对路径，多个配置文件的相对路径写在这个py文件里，方便我管理）
+</code></pre><p>#!/usr/bin/env python3</p>
+<h1 id="coding-utf-8-1"><a href="#coding-utf-8-1" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><h1 id="Author-likangming"><a href="#Author-likangming" class="headerlink" title="Author:likangming"></a>Author:likangming</h1><h1 id="Created-time-2019-5-10-14-35"><a href="#Created-time-2019-5-10-14-35" class="headerlink" title="Created time:2019/5/10 14:35"></a>Created time:2019/5/10 14:35</h1><h1 id="Filename-contants-py"><a href="#Filename-contants-py" class="headerlink" title="Filename:contants.py"></a>Filename:contants.py</h1><p>import os<br>base_dir = os.path.dirname(os.path.dirname(os.path.abspath(<strong>file</strong>)))      # 当前项目的路径<br>case_file = os.path.join(base_dir, ‘data’, ‘cases.xlsx’)        # 测试用例的路径<br>global_file = os.path.join(base_dir, ‘conf’, ‘global.conf’)       # global配置文件<br>online_file = os.path.join(base_dir, ‘conf’, ‘online.conf’)       # 阿里云环境配置文件<br>test_file = os.path.join(base_dir, ‘conf’, ‘test.conf’)       # 测试环境配置文件<br>issue_file = os.path.join(base_dir, ‘conf’, ‘issue.conf’)     # 预发布环境配置文件</p>
+<pre><code>&gt; 3.conf配置文件书写格式：
+</code></pre><p>[section]<br>option = value<br>···</p>
 
-    def __init__(self):     # 每个类属性对应excel里的一个字段，以自己的为主
-        self.case_id = None
-        self.title = None
-        self.url = None
-        self.data = None
-        self.method = None
-        self.header = None
-        self.expected = None
-        self.actual = None
-        self.result = None
-
-
-class DoExcel:
-
-    def __init__(self, file_name, sheet_name):
-        self.file_name = file_name
-        self.sheet_name = sheet_name
-        self.workbook = openpyxl.load_workbook(file_name)       # 读取excel文件
-        self.sheet = self.workbook[sheet_name]      # 指定对应的sheet
-
-    def getcase(self):      # 根据测试用例集的类属性获取excel的对应数据
-        max_row = self.sheet.max_row    # 获取最大行数
-        cases = []
-        for i in range(2, max_row + 1):  # 从第二行开始读取数据
-            case = Case()   # 实例
-            case.case_id = self.sheet.cell(row=i, column=1).value
-            case.title = self.sheet.cell(row=i, column=2).value
-            case.url = self.sheet.cell(row=i, column=3).value
-            case.data = self.sheet.cell(row=i, column=4).value
-            case.method = self.sheet.cell(row=i, column=5).value
-            case.expected = self.sheet.cell(row=i, column=6).value
-            cases.append(case)
-        self.workbook.close()       # 关闭workbook
-        return cases    # 返回case列表
-
-    def writer_result(self, row, actual, result):       # 写入数据到excel中
-        sheet = self.workbook[self.sheet_name]
-        sheet.cell(row, 7).value = actual
-        sheet.cell(row, 8).value = result
-        self.workbook.save(filename=self.file_name)     # 保存
-        self.workbook.close()
-</code></pre>
             </div>
             <hr>
 
@@ -621,7 +594,7 @@ class DoExcel:
                     </span>
                     <a href="https://likangming.github.io" class="b-link-green">Damon</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/05/09/cao-zuo-excel-lei-de-feng-zhuang/" class="b-link-green">DoExcel类的封装</a>
+                    <a href="/2019/05/10/python-pei-zhi-wen-jian-de-shi-yong/" class="b-link-green">python配置文件的使用</a>
                 </p>
             </div>
         </div>
@@ -644,7 +617,8 @@ class DoExcel:
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/05/10/python-pei-zhi-wen-jian-de-shi-yong/">
                     <div class="card-image">
@@ -661,9 +635,9 @@ class DoExcel:
 
 二.python中的ConfigParser类from confi</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -676,6 +650,7 @@ class DoExcel:
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -694,22 +669,25 @@ class DoExcel:
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/03/01/jie-kou-ce-shi-zhong-cookies-de-fu-yong/">
+                <a href="/2019/05/09/cao-zuo-excel-lei-de-feng-zhuang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="接口测试中cookies的复用">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="DoExcel类的封装">
                         
-                        <span class="card-title">接口测试中cookies的复用</span>
+                        <span class="card-title">DoExcel类的封装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
-在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。
-前提准备Python version：3.7Ida：</div>
+do_excel类的封装：支持读取测试用例，及修改测试用例。
+代码如下所示：#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Author:likangming
+# Created time</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-01
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-09
                             </span>
                         <span class="publish-author">
                             
