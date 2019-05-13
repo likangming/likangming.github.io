@@ -6,8 +6,11 @@
     <meta charset="utf-8">
     <meta name="keywords" content="接口测试中cookies的复用, Damon">
     <meta name="description" content="
+
 在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。
-前提准备Python version：3.7Ida：">
+
+前提准备
+Python version：3.7I">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -417,9 +420,16 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <hr>
+<blockquote>
 <p>在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。</p>
-<h3 id="前提准备"><a href="#前提准备" class="headerlink" title="前提准备"></a>前提准备</h3><p>Python version：3.7<br>Ida：Pycharm</p>
-<h3 id="方法一：在一个接口请求中输入上一个接口的cookies信息"><a href="#方法一：在一个接口请求中输入上一个接口的cookies信息" class="headerlink" title="方法一：在一个接口请求中输入上一个接口的cookies信息"></a>方法一：在一个接口请求中输入上一个接口的cookies信息</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HttpRequest</span><span class="token punctuation">:</span>
+</blockquote>
+<h4 id="前提准备"><a href="#前提准备" class="headerlink" title="前提准备"></a>前提准备</h4><blockquote>
+<p>Python version：3.7<br>Ida：Pycharm</p>
+</blockquote>
+<h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><blockquote>
+<p>在一个接口请求中输入上一个接口的cookies信息</p>
+</blockquote>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HttpRequest</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""
     使用这类的request方法去完成不同的http请求，并且返回相应结果
     """</span>
@@ -451,7 +461,10 @@
     params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'mobilephone'</span><span class="token punctuation">:</span> <span class="token string">'XXX'</span><span class="token punctuation">,</span> <span class="token string">'amount'</span><span class="token punctuation">:</span> <span class="token string">'1500'</span><span class="token punctuation">}</span>
     resp <span class="token operator">=</span> httprequest<span class="token punctuation">.</span>http_request<span class="token punctuation">(</span><span class="token string">'post'</span><span class="token punctuation">,</span> url_recharge<span class="token punctuation">,</span> data<span class="token operator">=</span>params<span class="token punctuation">,</span> cookies<span class="token operator">=</span>resp<span class="token punctuation">.</span>cookies<span class="token punctuation">)</span>
 </code></pre>
-<h3 id="方法二：直接调用requests的sessions"><a href="#方法二：直接调用requests的sessions" class="headerlink" title="方法二：直接调用requests的sessions"></a>方法二：直接调用requests的sessions</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HttpRequest2</span><span class="token punctuation">:</span>
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><blockquote>
+<p>直接调用requests的sessions</p>
+</blockquote>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HttpRequest2</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""
     使用这类的request方法去完成不同的http请求，并且返回相应结果
     """</span>
@@ -491,7 +504,10 @@
     resp <span class="token operator">=</span> httprequest<span class="token punctuation">.</span>http_request<span class="token punctuation">(</span><span class="token string">'post'</span><span class="token punctuation">,</span> url_recharge<span class="token punctuation">,</span> data<span class="token operator">=</span>params<span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
 </code></pre>
-<h4 id="总结：方法一是调用充值接口时，输入登录的cookies信息，方法二是调用Session对象，Session每执行一个对象，cookies信息都有保留在当前Session，所以可以调用。明白其中的原理，用哪种方式都可以。"><a href="#总结：方法一是调用充值接口时，输入登录的cookies信息，方法二是调用Session对象，Session每执行一个对象，cookies信息都有保留在当前Session，所以可以调用。明白其中的原理，用哪种方式都可以。" class="headerlink" title="总结：方法一是调用充值接口时，输入登录的cookies信息，方法二是调用Session对象，Session每执行一个对象，cookies信息都有保留在当前Session，所以可以调用。明白其中的原理，用哪种方式都可以。"></a>总结：方法一是调用充值接口时，输入登录的cookies信息，方法二是调用Session对象，Session每执行一个对象，cookies信息都有保留在当前Session，所以可以调用。明白其中的原理，用哪种方式都可以。</h4>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><blockquote>
+<p>方法一是调用充值接口时，输入登录的cookies信息，方法二是调用Session对象，Session每执行一个对象，cookies信息都有保留在当前Session，所以可以调用。明白其中的原理，用哪种方式都可以。</p>
+</blockquote>
+
             </div>
             <hr>
 

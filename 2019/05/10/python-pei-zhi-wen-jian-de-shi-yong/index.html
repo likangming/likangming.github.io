@@ -423,7 +423,12 @@
 <h3 id="二、python中的ConfigParser类"><a href="#二、python中的ConfigParser类" class="headerlink" title="二、python中的ConfigParser类"></a>二、python中的ConfigParser类</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> configparser <span class="token keyword">import</span> ConfigParser
 </code></pre>
 <blockquote>
-<p>configparser是python自带的模块，用法如下：<br>1.创建ConfigParser对象。<br>2.调用read()函数打开配置文件<br>3.常用配置函数如下：</p>
+<p>configparser是python自带的模块，用法如下：</p>
+<ol>
+<li>创建ConfigParser对象。</li>
+<li>调用read()函数打开配置文件</li>
+<li>常用配置函数如下：</li>
+</ol>
 </blockquote>
 <table>
 <thead>
@@ -464,7 +469,9 @@
 </tbody>
 </table>
 <h3 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h3><blockquote>
-<p>1.新建config.py文件</p>
+<ol>
+<li>新建config.py文件</li>
+</ol>
 </blockquote>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/env python</span>
 <span class="token comment" spellcheck="true"># _*_coding:utf-8_*_</span>
@@ -503,7 +510,9 @@ config <span class="token operator">=</span> ReadConfig<span class="token punctu
 <span class="token comment" spellcheck="true">#     print(config.get('api', 'pre_url'))</span>
 </code></pre>
 <blockquote>
-<p>2.新建contants.py文件（我是将测试用例的相对路径，多个配置文件的相对路径写在这个py文件里，方便我管理）</p>
+<ol start="2">
+<li>新建contants.py文件（我是将测试用例的相对路径，多个配置文件的相对路径写在这个py文件里，方便我管理）</li>
+</ol>
 </blockquote>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/env python3</span>
 <span class="token comment" spellcheck="true"># -*- coding: utf-8 -*-</span>
@@ -707,7 +716,10 @@ option <span class="token operator">=</span> value
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">一、写在前头
-1.DoMysql类完成对MySQL数据库：fetch_one跟fetch_all操作2.fetch_one：返回单个的元组（只取最上面的第一条结果），也就是一条记录(row)，如果没有结果 , 则返回 None3.fetch</div>
+
+DoMysql类完成对MySQL数据库：fetch_one跟fetch_all操作
+fetch_one：返回单个的元组（只取最上面的第一条结果），也就是一条记录(row)，如果没有结果 , 则返回 None
+fetch_al</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-13

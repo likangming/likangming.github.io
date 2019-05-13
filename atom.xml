@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://likangming.github.io/"/>
-  <updated>2019-05-13T06:46:27.755Z</updated>
+  <updated>2019-05-13T10:10:12.243Z</updated>
   <id>https://likangming.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://likangming.github.io/2019/05/13/python-cao-zuo-mysql-shu-ju-ku/"/>
     <id>https://likangming.github.io/2019/05/13/python-cao-zuo-mysql-shu-ju-ku/</id>
     <published>2019-05-13T03:00:00.000Z</published>
-    <updated>2019-05-13T06:46:27.755Z</updated>
+    <updated>2019-05-13T10:10:12.243Z</updated>
     
     <summary type="html">
     
@@ -47,7 +47,7 @@
     <link href="https://likangming.github.io/2019/05/10/python-pei-zhi-wen-jian-de-shi-yong/"/>
     <id>https://likangming.github.io/2019/05/10/python-pei-zhi-wen-jian-de-shi-yong/</id>
     <published>2019-05-10T07:00:00.000Z</published>
-    <updated>2019-05-13T09:49:53.224Z</updated>
+    <updated>2019-05-13T09:55:43.669Z</updated>
     
     <summary type="html">
     
@@ -73,7 +73,7 @@
     <link href="https://likangming.github.io/2019/05/09/cao-zuo-excel-lei-de-feng-zhuang/"/>
     <id>https://likangming.github.io/2019/05/09/cao-zuo-excel-lei-de-feng-zhuang/</id>
     <published>2019-05-09T04:00:00.000Z</published>
-    <updated>2019-05-13T09:50:04.522Z</updated>
+    <updated>2019-05-13T09:55:41.921Z</updated>
     
     <summary type="html">
     
@@ -101,7 +101,7 @@
     <link href="https://likangming.github.io/2019/03/01/jie-kou-ce-shi-zhong-cookies-de-fu-yong/"/>
     <id>https://likangming.github.io/2019/03/01/jie-kou-ce-shi-zhong-cookies-de-fu-yong/</id>
     <published>2019-03-01T06:47:00.000Z</published>
-    <updated>2019-05-13T09:50:37.785Z</updated>
+    <updated>2019-05-13T10:00:18.346Z</updated>
     
     <summary type="html">
     
@@ -110,8 +110,10 @@
         
         
           &lt;hr&gt;
+&lt;blockquote&gt;
 &lt;p&gt;在对接口做测试的时候，一个接口请求参数后所产生的cookies，很多时候会作为下一个接口的数据依赖。本篇则从完成接口文档中注册，登录，充值的调用，其中充值接口支持传cookies参数。&lt;/p&gt;
-&lt;h3 id=&quot;前提准备&quot;&gt;&lt;a href=&quot;#前提准备&quot;
+&lt;/blockquote&gt;
+&lt;h4
         
       
     
