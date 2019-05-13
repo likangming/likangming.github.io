@@ -7,7 +7,10 @@
     <meta name="keywords" content="DoExcel类的封装, Damon">
     <meta name="description" content="
 do_excel类的封装：支持读取测试用例，及修改测试用例。
-代码如下所示：#!/usr/bin/env python3# -*- coding: utf-8 -*-# Author:likangming# Created time:20">
+代码如下所示：#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Author:likangming
+# Created time">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -418,7 +421,60 @@ do_excel类的封装：支持读取测试用例，及修改测试用例。
             <div id="articleContent">
                 <hr>
 <p>do_excel类的封装：支持读取测试用例，及修改测试用例。</p>
-<h3 id="代码如下所示："><a href="#代码如下所示：" class="headerlink" title="代码如下所示："></a>代码如下所示：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># Author:likangming</span><br><span class="line"># Created time:2019/5/9 16:41</span><br><span class="line"># Filename:do_excel.py</span><br><span class="line">import openpyxl</span><br><span class="line"></span><br><span class="line">class Case:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    测试用例集，每一个测试用例，实际上就是它的一个实例</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def __init__(self):     # 每个类属性对应excel里的一个字段，以自己的为主</span><br><span class="line">        self.case_id = None</span><br><span class="line">        self.title = None</span><br><span class="line">        self.url = None</span><br><span class="line">        self.data = None</span><br><span class="line">        self.method = None</span><br><span class="line">        self.header = None</span><br><span class="line">        self.expected = None</span><br><span class="line">        self.actual = None</span><br><span class="line">        self.result = None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class DoExcel:</span><br><span class="line"></span><br><span class="line">    def __init__(self, file_name, sheet_name):</span><br><span class="line">        self.file_name = file_name</span><br><span class="line">        self.sheet_name = sheet_name</span><br><span class="line">        self.workbook = openpyxl.load_workbook(file_name)       # 读取excel文件</span><br><span class="line">        self.sheet = self.workbook[sheet_name]      # 指定对应的sheet</span><br><span class="line"></span><br><span class="line">    def getcase(self):      # 根据测试用例集的类属性获取excel的对应数据</span><br><span class="line">        max_row = self.sheet.max_row    # 获取最大行数</span><br><span class="line">        cases = []</span><br><span class="line">        for i in range(2, max_row + 1):  # 从第二行开始读取数据</span><br><span class="line">            case = Case()   # 实例</span><br><span class="line">            case.case_id = self.sheet.cell(row=i, column=1).value</span><br><span class="line">            case.title = self.sheet.cell(row=i, column=2).value</span><br><span class="line">            case.url = self.sheet.cell(row=i, column=3).value</span><br><span class="line">            case.data = self.sheet.cell(row=i, column=4).value</span><br><span class="line">            case.method = self.sheet.cell(row=i, column=5).value</span><br><span class="line">            case.expected = self.sheet.cell(row=i, column=6).value</span><br><span class="line">            cases.append(case)</span><br><span class="line">        self.workbook.close()       # 关闭workbook</span><br><span class="line">        return cases    # 返回case列表</span><br><span class="line"></span><br><span class="line">    def writer_result(self, row, actual, result):       # 写入数据到excel中</span><br><span class="line">        sheet = self.workbook[self.sheet_name]</span><br><span class="line">        sheet.cell(row, 7).value = actual</span><br><span class="line">        sheet.cell(row, 8).value = result</span><br><span class="line">        self.workbook.save(filename=self.file_name)     # 保存</span><br><span class="line">        self.workbook.close()</span><br></pre></td></tr></table></figure>
+<h3 id="代码如下所示："><a href="#代码如下所示：" class="headerlink" title="代码如下所示："></a>代码如下所示：</h3><pre><code>#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Author:likangming
+# Created time:2019/5/9 16:41
+# Filename:do_excel.py
+import openpyxl
+
+class Case:
+    &quot;&quot;&quot;
+    测试用例集，每一个测试用例，实际上就是它的一个实例
+    &quot;&quot;&quot;
+
+    def __init__(self):     # 每个类属性对应excel里的一个字段，以自己的为主
+        self.case_id = None
+        self.title = None
+        self.url = None
+        self.data = None
+        self.method = None
+        self.header = None
+        self.expected = None
+        self.actual = None
+        self.result = None
+
+
+class DoExcel:
+
+    def __init__(self, file_name, sheet_name):
+        self.file_name = file_name
+        self.sheet_name = sheet_name
+        self.workbook = openpyxl.load_workbook(file_name)       # 读取excel文件
+        self.sheet = self.workbook[sheet_name]      # 指定对应的sheet
+
+    def getcase(self):      # 根据测试用例集的类属性获取excel的对应数据
+        max_row = self.sheet.max_row    # 获取最大行数
+        cases = []
+        for i in range(2, max_row + 1):  # 从第二行开始读取数据
+            case = Case()   # 实例
+            case.case_id = self.sheet.cell(row=i, column=1).value
+            case.title = self.sheet.cell(row=i, column=2).value
+            case.url = self.sheet.cell(row=i, column=3).value
+            case.data = self.sheet.cell(row=i, column=4).value
+            case.method = self.sheet.cell(row=i, column=5).value
+            case.expected = self.sheet.cell(row=i, column=6).value
+            cases.append(case)
+        self.workbook.close()       # 关闭workbook
+        return cases    # 返回case列表
+
+    def writer_result(self, row, actual, result):       # 写入数据到excel中
+        sheet = self.workbook[self.sheet_name]
+        sheet.cell(row, 7).value = actual
+        sheet.cell(row, 8).value = result
+        self.workbook.save(filename=self.file_name)     # 保存
+        self.workbook.close()
+</code></pre>
             </div>
             <hr>
 
