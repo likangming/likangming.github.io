@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Python操作MySQL数据库</title>
+      <link href="/2019/05/13/python-cao-zuo-mysql-shu-ju-ku/"/>
+      <url>/2019/05/13/python-cao-zuo-mysql-shu-ju-ku/</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、写在前头"><a href="#一、写在前头" class="headerlink" title="一、写在前头"></a>一、写在前头</h3><blockquote><p>1.DoMysql类完成对MySQL数据库：fetch_one跟fetch_all操作<br>2.fetch_one：返回单个的元组（只取最上面的第一条结果），也就是一条记录(row)，如果没有结果 , 则返回 None<br>3.fetch_all：返回多个元组，即返回多条记录(rows),如果没有结果,则返回 ()<br>4.配置文件：将host，user，password，port记录在配置文件中，方便管理<br>5.如无例外，本博客都以Python3.X编写</p></blockquote><h3 id="二、安装并导入pymysql模块"><a href="#二、安装并导入pymysql模块" class="headerlink" title="二、安装并导入pymysql模块"></a>二、安装并导入pymysql模块</h3><p><code>pip install pymysql</code></p><blockquote><p>Python操作MySQL数据库有三种方法</p><blockquote><p>1.pymysql: 本文使用该模块<br>2.mysqldb：只能适用于Python2.7<br>3.mysql.connector：</p></blockquote></blockquote><h3 id="三、读取配置文件的数据"><a href="#三、读取配置文件的数据" class="headerlink" title="三、读取配置文件的数据"></a>三、读取配置文件的数据</h3><blockquote><p>读取config_file里的内容</p></blockquote><pre><code>import configparserfrom ALA_WeChat_1.common import contants    # 见另一篇文章class ReadBaseConfig:    &quot;&quot;&quot;    完成读取任一配置文件的读取    &quot;&quot;&quot;    def __init__(self):        self.config = configparser.ConfigParser()        self.config.read(contants.config_file)    def get(self, section, option):        return self.config.get(section, option)conf = ReadBaseConfig()     # 读取配置文件实例化</code></pre><h3 id="四、代码如下："><a href="#四、代码如下：" class="headerlink" title="四、代码如下："></a>四、代码如下：</h3><blockquote><p>1.完成对MySQL数据库的数据操作<br>2.想要查询的SQL语句，也可以保存在excel中或者配置文件中</p></blockquote><pre><code>import pymysqlfrom ALA_WeChat_1.common.config import confclass DoMysql:    &quot;&quot;&quot;    完成对MySQL数据库的数据操作    &quot;&quot;&quot;    def __init__(self):        host = conf.get(&#39;database&#39;, &#39;host&#39;)        user = conf.get(&#39;database&#39;, &#39;user&#39;)        password = conf.get(&#39;database&#39;, &#39;password&#39;)        port = int(conf.get(&#39;database&#39;, &#39;port&#39;))        # 创建连接        self.mysql = pymysql.connect(host=host, user=user, password=password, port=port, charset=&#39;utf8&#39;)        # 设置返回字典        self.cursor = self.mysql.cursor(pymysql.cursors.DictCursor)  # 创建游标    def fetch_one(self, sql):        self.cursor.execute(sql)        self.mysql.commit()        return self.cursor.fetchone()  # 返回一条数据（以元组形式）    def fetch_all(self, sql):        self.cursor.execute(sql)        return self.cursor.fetchall()  # 返回多条数据：元组里面嵌套元组    def close(self):        self.cursor.close()  # 关闭游标        self.mysql.close()  # 关闭连接if __name__ == &#39;__main__&#39;:    mysql = DoMysql()    result1 = mysql.fetch_all(&quot;要查询的SQL语句&quot;)    print(&#39;result:&#39;, result1)    print(&#39;type(result1):&#39;, type(result1))    mysql.close()</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 接口测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>python配置文件的使用</title>
       <link href="/2019/05/10/python-pei-zhi-wen-jian-de-shi-yong/"/>
       <url>/2019/05/10/python-pei-zhi-wen-jian-de-shi-yong/</url>

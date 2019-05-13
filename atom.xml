@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://likangming.github.io/"/>
-  <updated>2019-05-10T08:45:18.127Z</updated>
+  <updated>2019-05-13T06:01:53.409Z</updated>
   <id>https://likangming.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python操作MySQL数据库</title>
+    <link href="https://likangming.github.io/2019/05/13/python-cao-zuo-mysql-shu-ju-ku/"/>
+    <id>https://likangming.github.io/2019/05/13/python-cao-zuo-mysql-shu-ju-ku/</id>
+    <published>2019-05-13T03:00:00.000Z</published>
+    <updated>2019-05-13T06:01:53.409Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;一、写在前头&quot;&gt;&lt;a href=&quot;#一、写在前头&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://likangming.github.io/categories/Python/"/>
+    
+    
+      <category term="接口测试" scheme="https://likangming.github.io/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>python配置文件的使用</title>
