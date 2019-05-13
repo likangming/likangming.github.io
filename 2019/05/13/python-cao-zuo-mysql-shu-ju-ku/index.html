@@ -437,62 +437,75 @@ fetch_al">
 </ol>
 </blockquote>
 <h3 id="三、读取配置文件的数据"><a href="#三、读取配置文件的数据" class="headerlink" title="三、读取配置文件的数据"></a>三、读取配置文件的数据</h3><blockquote>
-<p>读取config_file里的内容<br><code>`</code> python<br>import configparser<br>from ALA_WeChat_1.common import contants    # 见另一篇文章</p>
+<p>读取config_file里的内容</p>
 </blockquote>
-<p>class ReadBaseConfig:<br>    “””<br>    完成读取任一配置文件的读取<br>    “””</p>
-<pre><code>def __init__(self):
-    self.config = configparser.ConfigParser()
-    self.config.read(contants.config_file)
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> configparser
+<span class="token keyword">from</span> ALA_WeChat_1<span class="token punctuation">.</span>common <span class="token keyword">import</span> contants    <span class="token comment" spellcheck="true"># 见另一篇文章</span>
 
-def get(self, section, option):
-    return self.config.get(section, option)
-</code></pre><p>conf = ReadBaseConfig()     # 读取配置文件实例化</p>
-<pre><code>
-### 四、代码如下
-&gt; 1. 完成对MySQL数据库的数据操作
-&gt; 2. 想要查询的SQL语句，也可以保存在excel中或者配置文件中
-``` python
-import pymysql
-from ALA_WeChat_1.common.config import conf
+<span class="token keyword">class</span> <span class="token class-name">ReadBaseConfig</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    完成读取任一配置文件的读取
+    """</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>config <span class="token operator">=</span> configparser<span class="token punctuation">.</span>ConfigParser<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>config<span class="token punctuation">.</span>read<span class="token punctuation">(</span>contants<span class="token punctuation">.</span>config_file<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">get</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> section<span class="token punctuation">,</span> option<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>config<span class="token punctuation">.</span>get<span class="token punctuation">(</span>section<span class="token punctuation">,</span> option<span class="token punctuation">)</span>
 
 
-class DoMysql:
-    &quot;&quot;&quot;
+
+conf <span class="token operator">=</span> ReadBaseConfig<span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true"># 读取配置文件实例化</span>
+</code></pre>
+<h3 id="四、代码如下"><a href="#四、代码如下" class="headerlink" title="四、代码如下"></a>四、代码如下</h3><blockquote>
+<ol>
+<li>完成对MySQL数据库的数据操作</li>
+<li>想要查询的SQL语句，也可以保存在excel中或者配置文件中</li>
+</ol>
+</blockquote>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> pymysql
+<span class="token keyword">from</span> ALA_WeChat_1<span class="token punctuation">.</span>common<span class="token punctuation">.</span>config <span class="token keyword">import</span> conf
+
+
+<span class="token keyword">class</span> <span class="token class-name">DoMysql</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
     完成对MySQL数据库的数据操作
-    &quot;&quot;&quot;
+    """</span>
 
-    def __init__(self):
-        host = conf.get(&#39;database&#39;, &#39;host&#39;)
-        user = conf.get(&#39;database&#39;, &#39;user&#39;)
-        password = conf.get(&#39;database&#39;, &#39;password&#39;)
-        port = int(conf.get(&#39;database&#39;, &#39;port&#39;))
-        # 创建连接
-        self.mysql = pymysql.connect(host=host, user=user, password=password, port=port, charset=&#39;utf8&#39;)
-        # 设置返回字典
-        self.cursor = self.mysql.cursor(pymysql.cursors.DictCursor)  # 创建游标
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        host <span class="token operator">=</span> conf<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'database'</span><span class="token punctuation">,</span> <span class="token string">'host'</span><span class="token punctuation">)</span>
+        user <span class="token operator">=</span> conf<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'database'</span><span class="token punctuation">,</span> <span class="token string">'user'</span><span class="token punctuation">)</span>
+        password <span class="token operator">=</span> conf<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'database'</span><span class="token punctuation">,</span> <span class="token string">'password'</span><span class="token punctuation">)</span>
+        port <span class="token operator">=</span> int<span class="token punctuation">(</span>conf<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'database'</span><span class="token punctuation">,</span> <span class="token string">'port'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 创建连接</span>
+        self<span class="token punctuation">.</span>mysql <span class="token operator">=</span> pymysql<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>host<span class="token operator">=</span>host<span class="token punctuation">,</span> user<span class="token operator">=</span>user<span class="token punctuation">,</span> password<span class="token operator">=</span>password<span class="token punctuation">,</span> port<span class="token operator">=</span>port<span class="token punctuation">,</span> charset<span class="token operator">=</span><span class="token string">'utf8'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 设置返回字典</span>
+        self<span class="token punctuation">.</span>cursor <span class="token operator">=</span> self<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span>pymysql<span class="token punctuation">.</span>cursors<span class="token punctuation">.</span>DictCursor<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 创建游标</span>
 
-    def fetch_one(self, sql):
-        self.cursor.execute(sql)
-        self.mysql.commit()
-        return self.cursor.fetchone()  # 返回一条数据（以元组形式）
+    <span class="token keyword">def</span> <span class="token function">fetch_one</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> sql<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>sql<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>cursor<span class="token punctuation">.</span>fetchone<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 返回一条数据（以元组形式）</span>
 
-    def fetch_all(self, sql):
-        self.cursor.execute(sql)
-        return self.cursor.fetchall()  # 返回多条数据：元组里面嵌套元组
+    <span class="token keyword">def</span> <span class="token function">fetch_all</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> sql<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>sql<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>cursor<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 返回多条数据：元组里面嵌套元组</span>
 
-    def close(self):
-        self.cursor.close()  # 关闭游标
-        self.mysql.close()  # 关闭连接
+    <span class="token keyword">def</span> <span class="token function">close</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>cursor<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 关闭游标</span>
+        self<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 关闭连接</span>
 
 
-if __name__ == &#39;__main__&#39;:
-    mysql = DoMysql()
-    result1 = mysql.fetch_all(&quot;要查询的SQL语句&quot;)
-    print(&#39;result:&#39;, result1)
-    print(&#39;type(result1):&#39;, type(result1))
-    mysql.close()
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    mysql <span class="token operator">=</span> DoMysql<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    result1 <span class="token operator">=</span> mysql<span class="token punctuation">.</span>fetch_all<span class="token punctuation">(</span><span class="token string">"要查询的SQL语句"</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'result:'</span><span class="token punctuation">,</span> result1<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'type(result1):'</span><span class="token punctuation">,</span> type<span class="token punctuation">(</span>result1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    mysql<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 </code></pre>
+
             </div>
             <hr>
 
