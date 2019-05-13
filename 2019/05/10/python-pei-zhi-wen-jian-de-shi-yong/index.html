@@ -420,8 +420,8 @@
                 <h3 id="一、什么是配置文件？为什么要做配置文件？"><a href="#一、什么是配置文件？为什么要做配置文件？" class="headerlink" title="一、什么是配置文件？为什么要做配置文件？"></a>一、什么是配置文件？为什么要做配置文件？</h3><blockquote>
 <p>将所有的代码和配置都变成模块化可配置化，这样就提高了代码的重用性，不再每次都去修改代码内部，这个就是我们逐步要做的事情，可配置化</p>
 </blockquote>
-<h3 id="二、python中的ConfigParser类"><a href="#二、python中的ConfigParser类" class="headerlink" title="二、python中的ConfigParser类"></a>二、python中的ConfigParser类</h3><pre><code>from configparser import ConfigParser
-</code></pre><blockquote>
+<h3 id="二、python中的ConfigParser类"><a href="#二、python中的ConfigParser类" class="headerlink" title="二、python中的ConfigParser类"></a>二、python中的ConfigParser类</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from configparser import ConfigParser</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>configparser是python自带的模块，用法如下：<br>1.创建ConfigParser对象。<br>2.调用read()函数打开配置文件<br>3.常用配置函数如下：</p>
 </blockquote>
 <table>
@@ -465,62 +465,15 @@
 <h3 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h3><blockquote>
 <p>1.新建config.py文件</p>
 </blockquote>
-<pre><code>#!/usr/bin/env python
-# _*_coding:utf-8_*_
-&quot;&quot;&quot;
-@Time     : 2019/5/10 13:59
-@Author   : Damon
-@Email    : kangming40@163.com
-@File     : config.py
-@Software : PyCharm
-&quot;&quot;&quot;
-import configparser
-from ALA_WeChat_1.common import contants
-
-
-class ReadConfig:
-    &quot;&quot;&quot;
-    完成配置文件的读取
-    &quot;&quot;&quot;
-
-    def __init__(self):
-        self.config = configparser.ConfigParser()  # 初始化类
-        self.config.read(contants.global_file)  # 先加载global
-        switch = self.config.getboolean(&#39;switch&#39;, &#39;on&#39;)  # 通过判断switch的值，来确定使用哪个环境的配置
-        if switch:      # 开关打开的时候，使用test的配置
-            self.config.read(contants.test_file, encoding=&#39;utf-8&#39;)
-        else:       # 开关关闭的时候，使用issue的配置
-            self.config.read(contants.issue_file, encoding=&#39;utf-8&#39;)
-
-    def get(self, section, option):
-        return self.config.get(section, option)
-
-
-config = ReadConfig()       # 1.实例化供调用
-# if __name__ == &#39;__main__&#39;:        # 2.练习的时候
-#     config = ReadConfig()
-#     print(config.get(&#39;api&#39;, &#39;pre_url&#39;))
-</code></pre><blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># _*_coding:utf-8_*_</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">@Time     : 2019/5/10 13:59</span><br><span class="line">@Author   : Damon</span><br><span class="line">@Email    : kangming40@163.com</span><br><span class="line">@File     : config.py</span><br><span class="line">@Software : PyCharm</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">import configparser</span><br><span class="line">from ALA_WeChat_1.common import contants</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class ReadConfig:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    完成配置文件的读取</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.config = configparser.ConfigParser()  # 初始化类</span><br><span class="line">        self.config.read(contants.global_file)  # 先加载global</span><br><span class="line">        switch = self.config.getboolean(&apos;switch&apos;, &apos;on&apos;)  # 通过判断switch的值，来确定使用哪个环境的配置</span><br><span class="line">        if switch:      # 开关打开的时候，使用test的配置</span><br><span class="line">            self.config.read(contants.test_file, encoding=&apos;utf-8&apos;)</span><br><span class="line">        else:       # 开关关闭的时候，使用issue的配置</span><br><span class="line">            self.config.read(contants.issue_file, encoding=&apos;utf-8&apos;)</span><br><span class="line"></span><br><span class="line">    def get(self, section, option):</span><br><span class="line">        return self.config.get(section, option)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">config = ReadConfig()       # 1.实例化供调用</span><br><span class="line"># if __name__ == &apos;__main__&apos;:        # 2.练习的时候</span><br><span class="line">#     config = ReadConfig()</span><br><span class="line">#     print(config.get(&apos;api&apos;, &apos;pre_url&apos;))</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>2.新建contants.py文件（我是将测试用例的相对路径，多个配置文件的相对路径写在这个py文件里，方便我管理）</p>
 </blockquote>
-<pre><code>#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Author:Damon
-# Created time:2019/5/10 14:35
-# Filename:contants.py
-import os
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))      # 当前项目的路径
-case_file = os.path.join(base_dir, &#39;data&#39;, &#39;cases.xlsx&#39;)        # 测试用例的路径
-global_file = os.path.join(base_dir, &#39;conf&#39;, &#39;global.conf&#39;)       # global配置文件
-online_file = os.path.join(base_dir, &#39;conf&#39;, &#39;online.conf&#39;)       # 阿里云环境配置文件
-test_file = os.path.join(base_dir, &#39;conf&#39;, &#39;test.conf&#39;)       # 测试环境配置文件
-issue_file = os.path.join(base_dir, &#39;conf&#39;, &#39;issue.conf&#39;)     # 预发布环境配置文件
-</code></pre><blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># Author:Damon</span><br><span class="line"># Created time:2019/5/10 14:35</span><br><span class="line"># Filename:contants.py</span><br><span class="line">import os</span><br><span class="line">base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))      # 当前项目的路径</span><br><span class="line">case_file = os.path.join(base_dir, &apos;data&apos;, &apos;cases.xlsx&apos;)        # 测试用例的路径</span><br><span class="line">global_file = os.path.join(base_dir, &apos;conf&apos;, &apos;global.conf&apos;)       # global配置文件</span><br><span class="line">online_file = os.path.join(base_dir, &apos;conf&apos;, &apos;online.conf&apos;)       # 阿里云环境配置文件</span><br><span class="line">test_file = os.path.join(base_dir, &apos;conf&apos;, &apos;test.conf&apos;)       # 测试环境配置文件</span><br><span class="line">issue_file = os.path.join(base_dir, &apos;conf&apos;, &apos;issue.conf&apos;)     # 预发布环境配置文件</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p>3.conf配置文件书写格式：</p>
 </blockquote>
-<pre><code>[section]
-option = value
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[section]</span><br><span class="line">option = value</span><br></pre></td></tr></table></figure>
             </div>
             <hr>
 
@@ -750,10 +703,7 @@ option = value
                 <div class="card-content article-content">
                     <div class="summary">
 do_excel类的封装：支持读取测试用例，及修改测试用例。
-代码如下所示：#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Author:likangming
-# Created time</div>
+代码如下所示：#!/usr/bin/env python3# -*- coding: utf-8 -*-# Author:likangming# Created time:20</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-09
